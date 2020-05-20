@@ -2,6 +2,8 @@ from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
+import csv
+
 
 def simple_get(url):
     """
@@ -39,7 +41,30 @@ def log_error(e):
     """
     print(e)
 
-raw_html = simple_get('https://www.polemermediterranee.com/Reseau/Annuaire-des-membres')
+
+def get_data(url):
+    raw_html = simple_get(url)
+    html = BeautifulSoup(raw_html, 'html.parser')
+    
+    with open('infoo_test.csv', mode='w') as test_file:
+        test_writer = csv.writer(test_file)
+        test_writer.writerow(['Company, Link, Contact'])
+
+        for article in html.find_all('article'):
+            row = []
+            name = article.find('h2').get_text()
+            row += name
+            row = ''.join(row)
+            row += ','
+            for link in article.find_all('a'):
+                link = link.get_text()
+                row += link
+                row = ''.join(row)
+                row += ','
+            row = row.split()
+            test_writer.writerow(row)
+
 
 if __name__ == '__main__':
-    print(raw_html)
+    get_data('https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/456')
+
