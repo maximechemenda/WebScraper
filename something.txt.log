@@ -1,0 +1,18 @@
+var titleList = document.getElementsByClassName("bloc-header-title small")
+
+for (i = 0; i < titleList.length; ++i) {
+    console.log(titleList[i].innerHTML)
+}
+VM843:4 ALSEAMAR
+VM843:4 APSYS
+VM843:4 AREVA 
+VM843:4 ASSYSTEM France/EXPLEO
+VM843:4 ASSYSTEM PACIFIQUE
+VM843:4 ATOS INTEGRATION
+VM843:4 BOURBON Offshore GAIA
+VM843:4 BRL Ingénierie
+VM843:4 Cegelec Défense et Naval Sud Est
+VM843:4 Chantier Naval de Marseille
+VM843:4 CIEL SNEF
+VM843:4 CMI TEchni5I Pastor
+undefined
