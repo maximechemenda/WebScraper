@@ -46,23 +46,18 @@ def get_data(url):
     raw_html = simple_get(url)
     html = BeautifulSoup(raw_html, 'html.parser')
     
-    with open('infoo_test.csv', mode='w') as test_file:
+    with open('infooo_test.csv', mode='w') as test_file:
         test_writer = csv.writer(test_file)
         test_writer.writerow(['Company, Link, Contact'])
 
         for article in html.find_all('article'):
-            row = []
             name = article.find('h2').get_text()
-            row += name
-            row = ''.join(row)
-            row += ','
+            row = ''.join([name]) + ','
             for link in article.find_all('a'):
                 link = link.get_text()
-                row += link
-                row = ''.join(row)
-                row += ','
-            row = row.split()
-            test_writer.writerow(row)
+                row = ''.join(row + link) + ','
+            print([row]) #just for debugging
+            test_writer.writerow([row])
 
 
 if __name__ == '__main__':
