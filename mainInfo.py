@@ -74,15 +74,29 @@ def update_data(values, parameter):
         splitted_line = line.split(',')
         name = splitted_line[0]
         for value in values:
-
             if name == value:
                 print('working')
                 line = line + parameter  
         result.append(line)
 
+    delete_file_content('infooo_test.csv')
+
+    with open('infooo_test.csv', mode='w') as test_file:
+        test_writer = csv.writer(test_file)
+        test_writer.writerow(['Company, Link, Contact'])
+        for line in result:
+            test_writer.writerow([line])
+
+
+
     print(result)
 
     
+def delete_file_content(file_name):
+    file = open(file_name, "r+")
+    file.truncate(0)
+    file.close()
+
 #PROBABLY SHOULD GO IN A SEPARATE CLASS
 def file_reader(file_name):
     with open(file_name) as file:
