@@ -19,21 +19,16 @@ class Request(object):
         file_object = open(fileToWrite,"r+")
 
         file_content = file_object.readlines()
-        print(file_content)
 
         for i in range(len(file_content)):
             if file_content[i].find('\n') != -1:
-                print('you found me')
                 file_content[i] = (file_content[i])[:-2]
 
         is_empty_file = len(file_content) == 0
-            
-        self.delete_file_content(fileToWrite)
 
         html = BeautifulSoup(raw_html, 'html.parser')
 
         if is_empty_file:
-            print('trueeeeee')
             file_object.write('Company,Link,Contact,Localisation' + '\n')
 
         for article in html.find_all('article'):
@@ -42,18 +37,7 @@ class Request(object):
             for link in article.find_all('a'):
                 link = link.get_text()
                 row = ''.join(row + link) + ','
-            file_content.append(row)
-            #test_writer.writerow([row])
-    
-        """ for line in file_content:
-            #test_writer.writerow([line])
-            file_object.write(line + '\n') """
-
-
-        for i in range(len(file_content)):
-            file_content[i] = file_content[i] + '\n'
-        
-        file_object.writelines(file_content)
+            file_object.write(row + '\n')
         
         file_object.close()
 
