@@ -8,10 +8,23 @@ class Request(object):
     def __init__(self,url):
         self.url = url
 
+    def delete_file_content(self, file_name):
+        file = open(file_name, "r+")
+        file.truncate(0)
+        file.close()
+
 
     def get_data(self, raw_html, fileToWrite):
+        with open(fileToWrite) as file:
+            file_content = file.readlines()
+
+        for i in range(len(file_content)):
+            file_content[i] = (file_content[i])[1:-2]
+            
+        self.delete_file_content(fileToWrite)
+
         html = BeautifulSoup(raw_html, 'html.parser')
-        
+
         with open(fileToWrite, mode='w') as test_file:
             test_writer = csv.writer(test_file)
             test_writer.writerow(['Company, Link, Contact'])
@@ -22,8 +35,27 @@ class Request(object):
                 for link in article.find_all('a'):
                     link = link.get_text()
                     row = ''.join(row + link) + ','
-                test_writer.writerow([row])
-                
+                file_content.append(row)
+                #test_writer.writerow([row])
+        
+            for line in file_content:
+                print(line)
+                print([line])
+                print('dfq')
+                test_writer.writerow([line])
+        
+        """ with open(fileToWrite, mode='w') as test_file:
+            test_writer = csv.writer(test_file)
+            test_writer.writerow(['Company, Link, Contact'])
+
+            for article in html.find_all('article'):
+                name = article.find('h2').get_text()
+                row = ''.join([name]) + ','
+                for link in article.find_all('a'):
+                    link = link.get_text()
+                    row = ''.join(row + link) + ','
+                test_writer.writerow([row]) """
+
 
     def simple_get(self):
         """

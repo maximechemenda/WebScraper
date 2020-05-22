@@ -6,6 +6,7 @@ class Main(object):
         self.site_url = site_url
         self.fileToWrite = fileToWrite
         self.parameter = parameter
+
     
     def run(self):
         request = Request(self.site_url)
@@ -18,6 +19,15 @@ class Main(object):
         data_manager = DataManager(self.fileToWrite, self.parameter)
         data_manager.main()
 
+
+    def restart(self):
+        request = Request(self.site_url)
+
+        request.delete_file_content(self.fileToWrite)
+
+
+
+
 if __name__ == "__main__":
     site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'my_second_test_web.csv'
@@ -25,5 +35,6 @@ if __name__ == "__main__":
 
     main = Main(site_url, fileToWrite, parameter)
 
-    #main.run()
-    main.main_loop()
+    #main.restart()
+    main.run()
+    #main.main_loop()
