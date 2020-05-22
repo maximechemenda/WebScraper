@@ -13,7 +13,6 @@ class DataManager(object):
     def main(self):
         values = self.file_reader('../content_chrome.log')
         self.update_data(values)
-        #self.delete_file_content(self.fileToWrite)
 
     def update_data(self, values):
         with open(self.fileToWrite) as file:
@@ -29,22 +28,24 @@ class DataManager(object):
         
         result = []
         for line in file_content:
-            new_line = line[1:-1] #TODO: NOT SURE IF I HAVE TO KEEP THIS!!!!
+            new_line = line[1:-2] #TODO: NOT SURE IF I HAVE TO KEEP THIS!!!!
             splitted_line = new_line.split(',')  
+            print(line)
+            print(new_line)
+            print('bbb')
 
             name = splitted_line[0]
             for value in values:
                 if name == value:
-                    new_line = new_line + self.parameter  
+                    new_line = new_line + self.parameter
             result.append(new_line)
-            print(result)
+            #print(result)
 
 
         self.delete_file_content(self.fileToWrite)
 
         with open(self.fileToWrite, mode='w') as test_file:
             test_writer = csv.writer(test_file)
-            test_writer.writerow(['Company, Link, Contact'])
             for line in result:
                 test_writer.writerow([line])
         print(result == file_content)
