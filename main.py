@@ -2,18 +2,19 @@ from Request import Request
 from DataManager import DataManager
 
 class Main(object):
-    def __init__(self, site_url, fileToWrite, parameter):
-        self.site_url = site_url
+    def __init__(self, fileToWrite, parameter, url_list):
+        self.url_list = url_list
+
         self.fileToWrite = fileToWrite
         self.parameter = parameter
 
     
     def run(self):
-        request = Request(self.site_url)
+        for url in self.url_list:
+            request = Request(url)
 
-        raw_html = request.simple_get()
-        request.get_data(raw_html, self.fileToWrite)
-
+            raw_html = request.simple_get()
+            request.get_data(raw_html, self.fileToWrite)
    
     def main_loop(self):
         data_manager = DataManager(self.fileToWrite, self.parameter)
@@ -21,18 +22,61 @@ class Main(object):
 
 
     def restart(self):
-        request = Request(self.site_url)
+        request = Request('https://www.polemermediterranee.com/Reseau/Annuaire-des-membres')
 
         request.delete_file_content(self.fileToWrite)
 
 
 
 if __name__ == "__main__":
-    site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
-    fileToWrite = 'my_second_test_web.csv'
+    url_list = [
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/12",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/24",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/36",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/48",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/60",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/72",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/84",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/96",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/108",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/120",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/132",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/144",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/156",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/168",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/180",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/192",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/204",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/216",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/228",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/240",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/252",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/264",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/276",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/288",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/30O",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/312",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/324",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/336",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/348",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/360",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/372",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/384",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/396",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/408",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/420",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/432",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/444",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/456"
+        ]
+
+
+    #site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
+    fileToWrite = 'pole_mer.csv'
     parameter = 'Nice'
 
-    main = Main(site_url, fileToWrite, parameter)
+    main = Main(fileToWrite, parameter, url_list)
 
     #main.restart()
     main.run()
