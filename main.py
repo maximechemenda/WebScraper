@@ -14,7 +14,7 @@ class Main(object):
         raw_html = request.simple_get()
         request.get_data(raw_html, self.fileToWrite)
 
-    
+   
     def main_loop(self):
         data_manager = DataManager(self.fileToWrite, self.parameter)
         data_manager.main()
@@ -24,7 +24,6 @@ class Main(object):
         request = Request(self.site_url)
 
         request.delete_file_content(self.fileToWrite)
-
 
 
 

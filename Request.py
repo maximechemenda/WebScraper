@@ -8,6 +8,7 @@ class Request(object):
     def __init__(self,url):
         self.url = url
 
+
     def delete_file_content(self, file_name):
         file = open(file_name, "r+")
         file.truncate(0)
@@ -18,6 +19,8 @@ class Request(object):
         with open(fileToWrite) as file:
             file_content = file.readlines()
 
+        is_empty_file = len(file_content) == 0
+
         for i in range(len(file_content)):
             file_content[i] = (file_content[i])[1:-2]
             
@@ -27,7 +30,9 @@ class Request(object):
 
         with open(fileToWrite, mode='w') as test_file:
             test_writer = csv.writer(test_file)
-            test_writer.writerow(['Company, Link, Contact'])
+
+            if is_empty_file:
+                test_writer.writerow(['Company, Link, Contact'])
 
             for article in html.find_all('article'):
                 name = article.find('h2').get_text()
@@ -39,22 +44,7 @@ class Request(object):
                 #test_writer.writerow([row])
         
             for line in file_content:
-                print(line)
-                print([line])
-                print('dfq')
                 test_writer.writerow([line])
-        
-        """ with open(fileToWrite, mode='w') as test_file:
-            test_writer = csv.writer(test_file)
-            test_writer.writerow(['Company, Link, Contact'])
-
-            for article in html.find_all('article'):
-                name = article.find('h2').get_text()
-                row = ''.join([name]) + ','
-                for link in article.find_all('a'):
-                    link = link.get_text()
-                    row = ''.join(row + link) + ','
-                test_writer.writerow([row]) """
 
 
     def simple_get(self):
