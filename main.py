@@ -76,12 +76,12 @@ if __name__ == "__main__":
 
     #site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'other_test.txt'
-    parameter = 'Nouvelle-Aquitaine'
+    parameter = 'Ports, logistique et transports maritimes'
 
     main = Main(fileToWrite, parameter, url_list)
 
-    main.restart()
-    main.run()
-    #main.main_loop()
+    #main.restart()
+    #main.run()
+    main.main_loop()
 
    

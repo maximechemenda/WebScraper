@@ -21,12 +21,16 @@ class DataManager(object):
             for i,line in enumerate(file_content):
                 for value in values:
                     if line.startswith(value):
+                        print('entering if')
                         file_content[i] = (file_content[i])[:-1].strip() + self.parameter + ',\n'
             file.seek(0)   
+
             for line in file_content:
                 file.write(line)
 
-        
+        print(len(values))
+
+
     def delete_file_content(self, file_name):
         file = open(file_name, "r+")
         file.truncate(0)
