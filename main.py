@@ -33,7 +33,6 @@ class Main(object):
 if __name__ == "__main__":
 
     url_list = [
-        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/12",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/24",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/36",
@@ -81,7 +80,7 @@ if __name__ == "__main__":
 
     main = Main(fileToWrite, parameter, url_list)
 
-    #main.restart()
+    main.restart()
     main.run()
     #main.main_loop()
 

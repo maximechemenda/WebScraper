@@ -4,7 +4,6 @@ from contextlib import closing
 from bs4 import BeautifulSoup
 import csv 
 
-
 class DataManager(object):
     def __init__(self, fileToWrite, parameter):
         self.fileToWrite = fileToWrite
@@ -17,28 +16,15 @@ class DataManager(object):
 
 
     def update_data(self, values):
-        print(values)
-        with open(self.fileToWrite) as file:
+        with open(self.fileToWrite, 'r+') as file:
             file_content = file.readlines()
-        
-        result = []
-        for line in file_content:
-            new_line = line[1:-2] #TODO: NOT SURE IF I HAVE TO KEEP THIS!!!!
-            splitted_line = new_line.split(',')  
-
-            name = splitted_line[0]
-            for value in values:
-                if name == value:
-                    print('heyyy')
-                    new_line = new_line + self.parameter
-            result.append(new_line)
-
-        self.delete_file_content(self.fileToWrite)
-
-        with open(self.fileToWrite, mode='w') as test_file:
-            test_writer = csv.writer(test_file, quoting=csv.QUOTE_NONNUMERIC) ##MAYBE REMOVE QUOTING
-            for line in result:
-                test_writer.writerow([line])
+            for i,line in enumerate(file_content):
+                for value in values:
+                    if line.startswith(value):
+                        file_content[i] = (file_content[i])[:-1].strip() + self.parameter + ',\n'
+            file.seek(0)   
+            for line in file_content:
+                file.write(line)
 
         
     def delete_file_content(self, file_name):
