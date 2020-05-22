@@ -8,8 +8,8 @@ class Request(object):
     def __init__(self,url):
         self.url = url
 
+
     def get_data(self, raw_html, fileToWrite):
-        #raw_html = self.simple_get(self.url)
         html = BeautifulSoup(raw_html, 'html.parser')
         
         with open(fileToWrite, mode='w') as test_file:
@@ -23,6 +23,7 @@ class Request(object):
                     link = link.get_text()
                     row = ''.join(row + link) + ','
                 test_writer.writerow([row])
+                
 
     def simple_get(self):
         """
