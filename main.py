@@ -31,6 +31,7 @@ class Main(object):
 
 
 if __name__ == "__main__":
+
     url_list = [
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/12",
@@ -75,12 +76,12 @@ if __name__ == "__main__":
 
 
     #site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
-    fileToWrite = 'pole_mer.csv'
+    fileToWrite = 'other_test.txt'
     parameter = 'Nouvelle-Aquitaine'
 
     main = Main(fileToWrite, parameter, url_list)
 
-    main.restart()
+    #main.restart()
     main.run()
     #main.main_loop()
 

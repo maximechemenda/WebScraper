@@ -16,37 +16,46 @@ class Request(object):
 
 
     def get_data(self, raw_html, fileToWrite):
-        with open(fileToWrite) as file:
-            file_content = file.readlines()
+        file_object = open(fileToWrite,"r+")
 
-        is_empty_file = len(file_content) == 0
+        file_content = file_object.readlines()
+        print(file_content)
 
         for i in range(len(file_content)):
-            file_content[i] = (file_content[i])[1:-2]
+            if file_content[i].find('\n') != -1:
+                print('you found me')
+                file_content[i] = (file_content[i])[:-2]
+
+        is_empty_file = len(file_content) == 0
             
         self.delete_file_content(fileToWrite)
 
         html = BeautifulSoup(raw_html, 'html.parser')
 
-        with open(fileToWrite, mode='w') as test_file:
-            test_writer = csv.writer(test_file, quoting=csv.QUOTE_NONNUMERIC) ##MAYBE REMOVE QUOTING
+        if is_empty_file:
+            print('trueeeeee')
+            file_object.write('Company,Link,Contact,Localisation' + '\n')
 
-            if is_empty_file:
-                test_writer.writerow(['Company, Link, Contact'])
+        for article in html.find_all('article'):
+            name = article.find('h2').get_text()
+            row = ''.join([name]) + ','
+            for link in article.find_all('a'):
+                link = link.get_text()
+                row = ''.join(row + link) + ','
+            file_content.append(row)
+            #test_writer.writerow([row])
+    
+        """ for line in file_content:
+            #test_writer.writerow([line])
+            file_object.write(line + '\n') """
 
-            for article in html.find_all('article'):
-                name = article.find('h2').get_text()
-                print(name)
-                row = ''.join([name]) + ','
-                for link in article.find_all('a'):
-                    link = link.get_text()
-                    row = ''.join(row + link) + ','
-                file_content.append(row)
-                print(row)
-                #test_writer.writerow([row])
+
+        for i in range(len(file_content)):
+            file_content[i] = file_content[i] + '\n'
         
-            for line in file_content:
-                test_writer.writerow([line])
+        file_object.writelines(file_content)
+        
+        file_object.close()
 
 
     def simple_get(self):
