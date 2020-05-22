@@ -24,7 +24,7 @@ class Main(object):
 if __name__ == "__main__":
     site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'my_second_test_web.csv'
-    parameter = 'Nantes'
+    parameter = 'USAA'
 
     main = Main(site_url, fileToWrite, parameter)
 

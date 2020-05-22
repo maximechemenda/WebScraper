@@ -12,33 +12,37 @@ class DataManager(object):
 
     def main(self):
         values = self.file_reader('../content_chrome.log')
-        self.update_data(values, self.parameter, self.fileToWrite)
+        self.update_data(values)
         #self.delete_file_content(self.fileToWrite)
 
-    def update_data(self, values, parameter, fileToWrite):
-        with open(self.fileToWrite, newline='') as csvfile:
+    def update_data(self, values):
+        with open(self.fileToWrite) as file:
+            file_content = file.readlines()
+
+        """ with open(self.fileToWrite, newline='') as csvfile:
             spamreader = csv.reader(csvfile, delimiter='\n', quotechar='|')
             file_content = []
             for row in spamreader:
                 line_content = row[0]
                 file_content.append(line_content)
+            print(file_content) """
         
         result = []
         for line in file_content:
-            print(line)
-            splitted_line = line.split(',')
-            print(splitted_line)
-         
+            new_line = line[1:-1] #TODO: NOT SURE IF I HAVE TO KEEP THIS!!!!
+            splitted_line = new_line.split(',')  
 
-            name = (splitted_line[0])[1:]
+            name = splitted_line[0]
             for value in values:
                 if name == value:
-                    line = line + parameter  
-            result.append(line)
+                    new_line = new_line + self.parameter  
+            result.append(new_line)
+            print(result)
 
-        self.delete_file_content(fileToWrite)
 
-        with open(fileToWrite, mode='w') as test_file:
+        self.delete_file_content(self.fileToWrite)
+
+        with open(self.fileToWrite, mode='w') as test_file:
             test_writer = csv.writer(test_file)
             test_writer.writerow(['Company, Link, Contact'])
             for line in result:
