@@ -18,9 +18,6 @@ class Main(object):
         data_manager = DataManager(self.fileToWrite, self.parameter)
         data_manager.main()
 
-
-
-
 if __name__ == "__main__":
     site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'my_second_test_web.csv'
