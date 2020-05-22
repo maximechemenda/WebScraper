@@ -17,6 +17,7 @@ class DataManager(object):
 
 
     def update_data(self, values):
+        print(values)
         with open(self.fileToWrite) as file:
             file_content = file.readlines()
         
@@ -28,13 +29,14 @@ class DataManager(object):
             name = splitted_line[0]
             for value in values:
                 if name == value:
+                    print('heyyy')
                     new_line = new_line + self.parameter
             result.append(new_line)
 
         self.delete_file_content(self.fileToWrite)
 
         with open(self.fileToWrite, mode='w') as test_file:
-            test_writer = csv.writer(test_file)
+            test_writer = csv.writer(test_file, quoting=csv.QUOTE_NONNUMERIC) ##MAYBE REMOVE QUOTING
             for line in result:
                 test_writer.writerow([line])
 
@@ -54,7 +56,7 @@ class DataManager(object):
             for i in range(len(file_content)):
                 if i > 4 and i != len(file_content) - 1: 
                     line = file_content[i]
-                    temp_name = line[7:]
+                    temp_name = line[8:]      #######THIS VALUE WILL NEED TO CHANGE BECAUSE SOMETIMES IN THE LOG FILE WE HAVE DIFFERENT NUMBER OF CHARACTERS TO IGNORE
                     temp_content.append(temp_name)
             
             final_content = []

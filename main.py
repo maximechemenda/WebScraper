@@ -1,5 +1,7 @@
 from Request import Request
 from DataManager import DataManager
+import csv
+
 
 class Main(object):
     def __init__(self, fileToWrite, parameter, url_list):
@@ -74,10 +76,12 @@ if __name__ == "__main__":
 
     #site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'pole_mer.csv'
-    parameter = 'Nice'
+    parameter = 'Nouvelle-Aquitaine'
 
     main = Main(fileToWrite, parameter, url_list)
 
-    #main.restart()
+    main.restart()
     main.run()
     #main.main_loop()
+
+   

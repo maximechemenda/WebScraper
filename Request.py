@@ -29,18 +29,20 @@ class Request(object):
         html = BeautifulSoup(raw_html, 'html.parser')
 
         with open(fileToWrite, mode='w') as test_file:
-            test_writer = csv.writer(test_file)
+            test_writer = csv.writer(test_file, quoting=csv.QUOTE_NONNUMERIC) ##MAYBE REMOVE QUOTING
 
             if is_empty_file:
                 test_writer.writerow(['Company, Link, Contact'])
 
             for article in html.find_all('article'):
                 name = article.find('h2').get_text()
+                print(name)
                 row = ''.join([name]) + ','
                 for link in article.find_all('a'):
                     link = link.get_text()
                     row = ''.join(row + link) + ','
                 file_content.append(row)
+                print(row)
                 #test_writer.writerow([row])
         
             for line in file_content:
