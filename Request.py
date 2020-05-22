@@ -29,7 +29,7 @@ class Request(object):
         html = BeautifulSoup(raw_html, 'html.parser')
 
         if is_empty_file:
-            file_object.write('Company,Link,Contact,Localisation' + '\n')
+            file_object.write('Entreprise,Lien,Contact,Localisation,Collège,Activité' + '\n')
 
         for article in html.find_all('article'):
             name = article.find('h2').get_text()

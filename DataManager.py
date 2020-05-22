@@ -37,7 +37,6 @@ class DataManager(object):
         file.close()
 
 
-    #PROBABLY SHOULD GO IN A SEPARATE CLASS
     def file_reader(self, file_name):
         with open(file_name) as file:
             file_content = file.readlines()
@@ -46,7 +45,7 @@ class DataManager(object):
             for i in range(len(file_content)):
                 if i > 4 and i != len(file_content) - 1: 
                     line = file_content[i]
-                    temp_name = line[8:]      #######THIS VALUE WILL NEED TO CHANGE BECAUSE SOMETIMES IN THE LOG FILE WE HAVE DIFFERENT NUMBER OF CHARACTERS TO IGNORE
+                    temp_name = line[8:] #######THIS VALUE CAN CHANGE BECAUSE SOMETIMES IN THE LOG FILE THE NUMBER OF CHARACTERS TO IGNORE CAN BE DIFFERENT
                     temp_content.append(temp_name)
             
             final_content = []

@@ -31,7 +31,6 @@ class Main(object):
 
 
 if __name__ == "__main__":
-
     url_list = [
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/12",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/24",
@@ -73,8 +72,6 @@ if __name__ == "__main__":
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/456"
         ]
 
-
-    #site_url = 'https://www.polemermediterranee.com/Reseau/Annuaire-des-membres'
     fileToWrite = 'other_test.txt'
     parameter = 'Ports, logistique et transports maritimes'
 

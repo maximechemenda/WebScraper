@@ -1,4 +1,4 @@
-Company,Link,Contact,Localisation
+Entreprise,Lien,Contact,Localisation,Collège,Activité
 AEROFLEX,https://www.aeroflex.com/,Naval et nautisme,Ports, logistique et transports maritimes,
 AFPA Béziers,https://www.afpa.fr/,Languedoc-Roussillon-Midi-Pyrénées,Centre de recherche et de formation,Ressources énergétiques et minières marines,Ports, logistique et transports maritimes,
 AFPA PACA,http://www.afpa.fr,Provence-Alpes-Côte d'Azur,Centre de recherche et de formation,Défense, Sécurité et sûreté maritimes,Naval et nautisme,Ports, logistique et transports maritimes,
