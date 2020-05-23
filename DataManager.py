@@ -44,10 +44,11 @@ class DataManager(object):
 
             temp_content = []
             for i in range(len(file_content)):
-                if i > 4 and i != len(file_content) - 1: 
+                if i > 3 and i != len(file_content) - 1: 
                     line = file_content[i]
-                    temp_name = line[self.ignoring_characters_length:] #######THIS VALUE CAN CHANGE BECAUSE SOMETIMES IN THE LOG FILE THE NUMBER OF CHARACTERS TO IGNORE CAN BE DIFFERENT
-                    temp_content.append(temp_name)
+                    if len(line.strip()) != 0:
+                        temp_name = line[self.ignoring_characters_length:] 
+                        temp_content.append(temp_name)
             
             final_content = []
             for i in range(len(temp_content)):
