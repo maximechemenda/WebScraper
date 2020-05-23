@@ -19,15 +19,18 @@ If you now open the final file, you should see the name of the companies, their 
    - uncomment the line 54 (main.main_loop())
 
 4. Go to the website https://www.polemermediterranee.com/Reseau/Annuaire-des-membres and:
-   - right click on the page
-   - click "Inspect"
+   - right click on the page and select "Inspect"
    - If you are not already there, navigate to the console
    
-*For this step, you need to ensure that the console is empty. If it isn't, right click in the console, and click on "Hide messages from ...". *\
 5. Go to the file namesExtractor.js and copy its content, then:
    - on the website, select one filter (make sure that there is only one filter selected, it will not work if more than 1 filter are selected)
    - as there is an infinite scroll, make sure to scroll until the bottom of the page until no more companies appear
+   - right click on the console, and select "Clear console"
    - paste the copied code in the console
    - right click on the console
    - click on "Save as..." and save the content of the console to the file "content_chrome.log". Make sure this file will be located in the directory of the project
+   - Copy the name of the selected filter, then go to the file main.py, and on line xxx, paste it.
+   - Go to the terminal, make sure you are in the directory of the project, and run: "python3 main.py"
+   
+6. Repeat the previous step as many times as there are filters, and every time, unselect the previous filter, and select the new filter
    
