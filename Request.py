@@ -16,7 +16,7 @@ class Request(object):
 
 
     def get_data(self, raw_html, fileToWrite):
-        file_object = open(fileToWrite,"r+")
+        file_object = open(fileToWrite,"w+")
 
         file_content = file_object.readlines()
 

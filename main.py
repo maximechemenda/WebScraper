@@ -4,11 +4,11 @@ import csv
 
 
 class Main(object):
-    def __init__(self, fileToWrite, parameter, url_list):
+    def __init__(self, fileToWrite, filter, url_list, ignoring_characters_length):
         self.url_list = url_list
-
         self.fileToWrite = fileToWrite
-        self.parameter = parameter
+        self.filter = filter
+        self.ignoring_characters_length = ignoring_characters_length
 
     
     def run(self):
@@ -19,13 +19,12 @@ class Main(object):
             request.get_data(raw_html, self.fileToWrite)
    
     def main_loop(self):
-        data_manager = DataManager(self.fileToWrite, self.parameter)
+        data_manager = DataManager(self.fileToWrite, self.filter, self.ignoring_characters_length)
         data_manager.main()
 
 
     def restart(self):
         request = Request('https://www.polemermediterranee.com/Reseau/Annuaire-des-membres')
-
         request.delete_file_content(self.fileToWrite)
 
 
@@ -72,13 +71,17 @@ if __name__ == "__main__":
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/456"
         ]
 
-    fileToWrite = 'other_test.txt'
-    parameter = 'Ports, logistique et transports maritimes'
 
-    main = Main(fileToWrite, parameter, url_list)
+    fileToWrite = 'data.txt'
+    console_characters = 'VM360:4'
+    filter = 'Ports, logistique et transports maritimes'
+    
+    ignoring_characters_length = len(console_characters.strip()) + 1 
+
+    main = Main(fileToWrite, filter, url_list, ignoring_characters_length)
 
     #main.restart()
-    #main.run()
-    main.main_loop()
+    main.run()
+    #main.main_loop()
 
    

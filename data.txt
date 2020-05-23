@@ -1,0 +1,13 @@
+Entreprise,Lien,Contact,Localisation,Collège,Activité
+Biotope,https://www.biotope.fr/,grandsud@biotope.fr ,
+BITD PROVEN,
+BNP Paribas,https://group.bnpparibas/,patrick.walzer@bnpparibas.com,
+BOARDING RING READING ,http://www.boardingring.com/,hjeannin@boardingring.com,
+BOURBON Offshore GAIA,https://www.bourbonoffshore.com/fr,patrick.belenfant@bourbon-online.com,
+BRGM-BUREAU DES RECHERCHES GEOLOGIQUES ET MINIERES,https://brgm.fr/,d.dessandier@brgm.fr,
+BRL Ingénierie,https://brli.brl.fr/,gilles.rocquelain@brl.fr,
+BSB Marine,https://www.oscar-system.com,contact@bsb-marine.com,
+BUYCO FOR GROWTH,http://www.buycoforgrowth.com/,info@buyco.co,
+C2MA,https://c2ma.mines-ales.fr/,eric.garcia-diaz@mines-ales.fr,
+Cabinet d'avocat JurisBonis,https://www.jurisbonis-avocat.fr/,m.bonis@jurisbonis-avocat.fr,
+Cabinet Germain Maureau,https://germainmaureau.com/,maximin.salles@germainmaureau.com,

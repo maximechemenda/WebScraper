@@ -5,13 +5,14 @@ from bs4 import BeautifulSoup
 import csv 
 
 class DataManager(object):
-    def __init__(self, fileToWrite, parameter):
+    def __init__(self, fileToWrite, filter, ignoring_characters_length):
         self.fileToWrite = fileToWrite
-        self.parameter = parameter
+        self.filter = filter
+        self.ignoring_characters_length = ignoring_characters_length
 
 
     def main(self):
-        values = self.file_reader('../content_chrome.log')
+        values = self.file_reader('./content_chrome.log')
         self.update_data(values)
 
 
@@ -21,8 +22,8 @@ class DataManager(object):
             for i,line in enumerate(file_content):
                 for value in values:
                     if line.startswith(value):
-                        print('entering if')
-                        file_content[i] = (file_content[i])[:-1].strip() + self.parameter + ',\n'
+                        print('writing to file')
+                        file_content[i] = (file_content[i])[:-1].strip() + self.filter + ',\n'
             file.seek(0)   
 
             for line in file_content:
@@ -45,7 +46,7 @@ class DataManager(object):
             for i in range(len(file_content)):
                 if i > 4 and i != len(file_content) - 1: 
                     line = file_content[i]
-                    temp_name = line[8:] #######THIS VALUE CAN CHANGE BECAUSE SOMETIMES IN THE LOG FILE THE NUMBER OF CHARACTERS TO IGNORE CAN BE DIFFERENT
+                    temp_name = line[self.ignoring_characters_length:] #######THIS VALUE CAN CHANGE BECAUSE SOMETIMES IN THE LOG FILE THE NUMBER OF CHARACTERS TO IGNORE CAN BE DIFFERENT
                     temp_content.append(temp_name)
             
             final_content = []
