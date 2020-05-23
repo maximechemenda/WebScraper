@@ -2,10 +2,9 @@
 text
 
 ## Installation
-Go to the terminal and copy those commands:
-1. mkdir new_folder
-2. cd new_folder
-3. git clone https://github.com/maximechemenda/WebScraper.git .
+Go to the terminal and run:
+- mkdir new_folder && cd new_folder && git clone https://github.com/maximechemenda/WebScraper.git .
+
 
 ## Usage
 1. Open the file main.py, and on line 74, give the name of the final file (the file where the data should be written)
