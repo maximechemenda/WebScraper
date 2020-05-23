@@ -31,6 +31,7 @@ class Main(object):
 
 if __name__ == "__main__":
     url_list = [
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/30O",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/12",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/24",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/36",
@@ -54,8 +55,8 @@ if __name__ == "__main__":
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/252",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/264",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/276",
-        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/288",
-        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/30O",
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/288",#letter N
+        "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/300",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/312",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/324",
         "https://www.polemermediterranee.com/Reseau/Annuaire-des-membres/(offset)/336",
@@ -72,7 +73,7 @@ if __name__ == "__main__":
         ]
 
 
-    fileToWrite = 'data.txt'
+    fileToWrite = 'debugging.txt'
     console_characters = 'VM360:4'
     filter = 'Ports, logistique et transports maritimes'
     
