@@ -17,19 +17,30 @@ class DataManager(object):
 
 
     def update_data(self, values):
+        temp = []
+        for value in values:
+            temp.append(value)
+
+        counter = 0
         with open(self.fileToWrite, 'r+') as file:
             file_content = file.readlines()
             for i,line in enumerate(file_content):
                 for value in values:
-                    if line.startswith(value):
-                        print('writing to file')
-                        file_content[i] = (file_content[i])[:-1].strip() + self.filter + ',\n'
+                    splitted_line = line.split('|||')
+                    first_element = splitted_line[0]
+                    if first_element.strip() == value.strip():
+                        temp.remove(value)
+                        counter = counter + 1
+                        file_content[i] = (file_content[i])[:-1].strip() + self.filter + '|||\n'
             file.seek(0)   
 
             for line in file_content:
                 file.write(line)
 
+        print(temp)
         print(len(values))
+        print(counter)
+        print(len(values) == counter)
 
 
     def delete_file_content(self, file_name):
@@ -47,7 +58,7 @@ class DataManager(object):
                 if i > 3 and i != len(file_content) - 1: 
                     line = file_content[i]
                     if len(line.strip()) != 0:
-                        temp_name = line[self.ignoring_characters_length:] 
+                        temp_name = line[self.ignoring_characters_length:]
                         temp_content.append(temp_name)
             
             final_content = []

@@ -29,14 +29,25 @@ class Request(object):
         html = BeautifulSoup(raw_html, 'html.parser')
 
         if is_empty_file:
-            file_object.write('Entreprise,Lien,Contact,Localisation,Collège,Activité' + '\n')
+            file_object.write('Entreprise|||Lien|||Contact|||Localisation|||Collège|||Activité' + '\n')
 
         for article in html.find_all('article'):
-            name = article.find('h2').get_text()
-            row = ''.join([name]) + ','
-            for link in article.find_all('a'):
-                link = link.get_text()
-                row = ''.join(row + link) + ','
+            name = article.find('h2').get_text().strip()
+            row = (''.join([name]) + '|||').strip()
+
+            if len(article.find_all('a')) == 0:
+                row = (''.join(row + 'not provided' + '|||' + 'not provided' + '|||')).strip()
+            elif len(article.find_all('a')) == 1:
+                link = article.find_all('a')[0].get_text().strip()
+                if link.startswith('http'):
+                    row = (''.join(row + link + '|||' + 'not provided' + '|||'))
+                else:
+                    row = (''.join(row + 'not provided' + '|||' + link + '|||'))
+            else:
+                for link in article.find_all('a'):
+                    link = link.get_text().strip()
+                    row = (''.join(row + link) + '|||').strip()
+                    
             file_object.write(row + '\n')
         
         file_object.close()

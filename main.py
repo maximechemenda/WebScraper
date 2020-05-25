@@ -73,16 +73,18 @@ if __name__ == "__main__":
         ]
 
 
-    fileToWrite = 'debugging.txt'
-    console_characters = 'VM360:4'
-    filter = 'Ports, logistique et transports maritimes'
+    fileToWrite = 'pole_mer_data.txt'
+    console_characters = 'VM263:3'
+    filter = '''Provence-Alpes-Côte d'Azur'''
     
     ignoring_characters_length = len(console_characters.strip()) + 1 
 
     main = Main(fileToWrite, filter, url_list, ignoring_characters_length)
 
     #main.restart()
-    main.run()
-    #main.main_loop()
+    #main.run()
+    main.main_loop()
 
-   
+   #attention à 
+   #OL & ....
+   #HYDROPTIC (languedoc roussillon midi pyrnéensefsq) --chercher à chaque filtre
