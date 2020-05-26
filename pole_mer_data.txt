@@ -1,4 +1,4 @@
-Entreprise|||Lien|||Contact|||Localisation|||Collège|||Activités
+Entreprise|||Lien|||Contact|||Localisation|||Ville|||Collège|||Activités
 3X Engineering|||http://www.3xeng.com/|||sbda@3xeng.com|||not provided|||Monaco|||PME|||Ressources énergétiques et minières marines
 A CORROS|||http://www.a-corros.fr|||jbmemet@a-corros.fr|||Provence-Alpes-Côte d'Azur|||Arles|||PME|||Naval et nautisme---Ressources énergétiques et minières marines---Environnement et valorisation du littoral---Ports, logistique et transports maritimes
 A2V|||http://www.aavessels.com|||thierry.oneill@aavessels.com|||Pays de la Loire|||La Rochelle|||PME|||Défense, Sécurité et sûreté maritimes---Naval et nautisme
