@@ -29,13 +29,13 @@ class DataManager(object):
                     splitted_line = line.split('|||')
                     first_element = splitted_line[0]
                     if first_element.strip() == value.strip():
-                        #temp.remove(value)
+                        temp.remove(value)
                         counter = counter + 1
-                        file_content[i] = (file_content[i])[:-1].strip() + self.filter + '|||\n'
+                        file_content[i] = (file_content[i])[:-1].strip() + self.filter + '---\n'
             file.seek(0)   
 
-            for line in file_content:
-                file.write(line)
+            #for line in file_content:
+            #    file.write(line)
 
         print(temp)
         print(len(values))
