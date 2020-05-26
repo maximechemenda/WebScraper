@@ -74,8 +74,8 @@ if __name__ == "__main__":
 
 
     fileToWrite = 'pole_mer_data.txt'
-    console_characters = 'VM263:3'
-    filter = '''Provence-Alpes-Côte d'Azur'''
+    console_characters = 'VM216:3'
+    filter = 'Ecosystème'
     
     ignoring_characters_length = len(console_characters.strip()) + 1 
 

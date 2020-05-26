@@ -1,7 +1,0 @@
-var titleList = document.getElementsByClassName("bloc-header-title small")
-for (i = 0; i < titleList.length; ++i) {
-    console.log(titleList[i].innerHTML)
-}
-VM605:3 A2V
-VM605:3 NEREO TECHNOLOGIES 
-undefined

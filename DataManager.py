@@ -29,7 +29,7 @@ class DataManager(object):
                     splitted_line = line.split('|||')
                     first_element = splitted_line[0]
                     if first_element.strip() == value.strip():
-                        temp.remove(value)
+                        #temp.remove(value)
                         counter = counter + 1
                         file_content[i] = (file_content[i])[:-1].strip() + self.filter + '|||\n'
             file.seek(0)   
