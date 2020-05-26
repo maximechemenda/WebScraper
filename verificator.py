@@ -1,16 +1,10 @@
 with open('pole_mer_data.txt', 'r+') as file:
     file_content = file.readlines()
-    counter = 0
-    other_one = 0
     for line in file_content:
-        splitted_line = line.split('|||')
-        if len(splitted_line) == 6:
-            counter += 1
-            if splitted_line[4] == 'not provided':
-                other_one += 1
+        if not line.endswith('|||\n'):
+            print(line)
         
-    print(counter)
-    print(other_one)
+
 
     
 
