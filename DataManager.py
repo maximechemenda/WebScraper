@@ -34,8 +34,8 @@ class DataManager(object):
                         file_content[i] = (file_content[i])[:-1].strip() + self.filter + '---\n'
             file.seek(0)   
 
-            #for line in file_content:
-            #    file.write(line)
+            for line in file_content:
+                file.write(line)
 
         print(temp)
         print(len(values))
